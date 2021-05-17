@@ -90,4 +90,13 @@ class GameController extends AbstractController
 
         }
     }
+
+    /**
+     * @Route ("/test_repo", name="game_test_repo")
+     */
+    public function testJoin(GameRepository $gr){
+
+        $games = $gr->findJoin();
+
+    }
 }

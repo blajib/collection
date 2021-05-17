@@ -28,14 +28,19 @@ public function findGenreUser(User $currentUser)
 {
 
 
-   $query = $this
-        ->createQueryBuilder('g')
-        /*->select('ga','ge','u')*/
-        /*->andWhere('g like :val')*/
-        ->innerJoin('g.games','ga')
+/*   $query = $this
+        ->createQueryBuilder('ge')
+        ->addSelect('u','ge')
+        ->innerJoin('ge.id','ga')
         ->innerJoin('ga.users','u')
-        ->innerJoin('u.hardwares', 'h')
-   ;
+
+   ;*/
+    $query = $this
+        ->createQueryBuilder('ge')
+        ->addSelect('g','ge')
+        ->innerJoin('g.genre','ge')
+
+    ;
         /*->innerJoin('g.genre','ge');*/
         /*->setParameter('val',6);*/
 

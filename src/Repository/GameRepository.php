@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Game;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -47,4 +48,39 @@ class GameRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findJoin()
+    {
+
+
+        /*   $query = $this
+                ->createQueryBuilder('ge')
+                ->addSelect('u','ge')
+                ->innerJoin('ge.id','ga')
+                ->innerJoin('ga.users','u')
+
+           ;*/
+        $query = $this
+            ->createQueryBuilder('g')
+            ->addSelect('h','g')
+            ->innerJoin('g.hardware','h')
+            ->andWhere('g.hardware = :val')
+            ->setParameter('val',33)
+
+        ;
+/*        $query = $this
+            ->createQueryBuilder('g')
+            ->addSelect('ge','g')
+            ->innerJoin('g.genre','ge')
+            ->innerJoin()
+
+        ;*/
+        /*->innerJoin('g.genre','ge');*/
+        /*->setParameter('val',6);*/
+
+
+        dd($query->getQuery()->getResult());
+
+        return $query->getQuery()->getResult();
+
+    }
 }

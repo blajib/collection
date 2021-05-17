@@ -7,7 +7,7 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-import 'bootstrap/dist/css/bootstrap.css';
+//import 'bootstrap/dist/css/bootstrap.css';
 /*require('bootstrap/dist/css/bootstrap.css');
 require('./styles/app.css')
 const $ = require('jquery');*/
@@ -17,3 +17,4 @@ const $ = require('jquery');*/
 /*
 import './bootstrap'
 */
+console.log('Hello Webpack Encore! Edit me in assets/js/app.js');

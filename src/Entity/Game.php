@@ -51,11 +51,6 @@ class Game
      */
     private $imageLink;
 
-    /**
-     * @ORM\ManyToMany (targetEntity="App\Entity\User")
-     */
-    private $users;
-
 
     public function getId(): ?int
     {
@@ -84,22 +79,6 @@ class Game
         $this->year = $year;
 
         return $this;
-    }
-
-    /**
-     * @param mixed $users
-     */
-    public function setUsers($users): void
-    {
-        $this->users = $users;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsers()
-    {
-        return $this->users;
     }
 
     /**
