@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+<h1>Inscription</h1>
+{#    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" value="Let's go !!">
+    {{ form_end(form) }}#}
+<div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form method="post">
+            <div class="form-lambda">
+                <h1 class="h3 mb-3 font-weight-normal">Veuillez-vous connecter</h1>
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
+                <label for="inputPassword">Password</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" required><br>
+                <button class="btn btn-lg btn-secondary" type="submit">
+                    Sign in
+                </button>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </form>
+
+    </div>
+        <div class="col-md-4"></div>
+</div>
+
+{% endblock %}

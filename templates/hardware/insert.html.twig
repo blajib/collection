@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des jeux{% endblock %}
+
+{% block body %}
+ <div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+{#
+   {{ form_start(form) }}
+   {{ form_widget(form) }}
+   <br>
+   <input type="submit" value="Enregistrer" class="form-control btn-secondary button-submit-add">
+   {{ form_end(form) }}
+#}
+
+   {{ form_start(form) }}
+   {{ form_row(form.name) }}
+   {{ form_row(form.year) }}
+   {{ form_row(form.hardwaremaker) }}
+   <br>
+   <div class="button-center">
+   <a class="form-control btn-secondary button-submit-add" href="{{ path("add_hardware") }}">Ajouter consolier</a>
+   </div>
+   <br>
+   <input type="submit" value="Enregistrer" class="form-control btn-secondary button-submit-add">
+   {{ form_end(form) }}
+
+  </div>
+  <div class="col-md-4"></div>
+ </div>
+{% endblock %}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{{ asset('css/style.scss') }}" />
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+{#         Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('global') }}
+        {% endblock %}
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}#}
+    </head>
+    <body>
+    <div class="blockHeader">
+        {% block header %}
+            <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light navbarPerso ">
+                <a class="navbar-brand bioCCoolBttnHome" href="{{ path("home") }}">Collection</a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            {% if app.user %}
+                        <li>
+                            <a class="nav-link" href="{{ path("app_logout") }}" >Logout </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" >Mon profil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("index_game") }}">Mes jeux</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("index_hardware") }}">Mes consoles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("index_hardwareMaker") }}">Les consoliers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("index_editor") }}">Les éditeurs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path("test_join") }}">Joiiinnnnnn</a>
+                        </li>
+
+                        {#                        <li class="nav-item">
+                                <a class="nav-link" href="{{ path('places_user') }}">Mes endroits</a>
+                            </li>      #}
+                        {#                        <li class="nav-item">
+                                <a class="nav-link" href="{{ path('my_places') }}">Mes endroits</a>
+                            </li>#}
+
+                        {% else %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="{{ path("app_login") }}">Login </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path("app_register") }}" >Inscription</a>
+                            </li>
+                        {% endif %}
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        {% endblock %}
+    </div>
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }} alert-dismissable">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+        {% block body %}
+        {% endblock %}
+    </body>
+</html>

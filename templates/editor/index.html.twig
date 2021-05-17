@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste consoliers{% endblock %}
+
+{% block body %}
+    <div class="row block-add-game-button" >
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <a class="add-game-button btn-secondary form-control" href="{{ path("add_editor") }}"> Ajoute éditeur</a>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+    <br>
+    {%  if editorList is not empty %}
+        {% for editor in editorList  %}
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 class="game-name">{{ editor.name|title }}</h2>
+        <img src="" alt="" class="img-game-link">
+    </div>
+    <div class="col-md-2"></div>
+</div>
+        {% endfor %}
+    {%  endif %}
+{% endblock %}
